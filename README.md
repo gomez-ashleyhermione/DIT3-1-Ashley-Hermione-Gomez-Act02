@@ -6,7 +6,7 @@
 
 At first, I didn't realize how many things happen behind the scenes when you just click a button or press the home button! When I clicked "Go to Screen 2", I saw in the Logcat that MainActivity didn't just disappear and it went through onPause() and onStop() first. Meanwhile, SecondActivity started fresh with onCreate(), onStart(), and onResume(). It's like the app is putting the first screen to sleep instead of killing it.
 
-The weirdest thing was when I rotated my phone. The whole activity got destroyed and recreated! I saw onPause() → onStop() → onDestroy() → onCreate() → onStart() → onResume() all happen just from rotating. I guess Android does this to reload the layout properly, but it seems like a lot of work.
+The weirdest thing was when I rotated my phone. The whole activity got destroyed and recreated! I saw onPause() - onStop() - onDestroy() - onCreate() - onStart() - onResume() all happen just from rotating. I guess Android does this to reload the layout properly, but it seems like a lot of work.
 
 When I minimized the app (pressed home button), it called onPause() and onStop(), but NOT onDestroy(). So the app is still in memory, just hidden. When I came back to it, it continued right where I left off using onRestart().
 
